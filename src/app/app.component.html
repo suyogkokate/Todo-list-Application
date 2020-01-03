@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<div class="container" style="background-color:#F4F2F4">
+  <div class="row mt-4">
+    <div class="col">
+      <h2 class="text-center mt-4">Todo List APP</h2>
+    </div>
+  </div>
+  <div class="row mt-4 justify-content-center">
+    <div class="form-inline text-center">
+      <div class="form-group mx-sm-3 mb-2">
+        <input type="text" class="form-control" [(ngModel)]="task" placeholder="Enter Task..">
+      </div>
+      <button type="submit" *ngIf="id > 0 else update "class="btn btn-success mb-2"  (click)="updateTask()">Update</button>
+      <ng-template #update>
+        <button type="submit" class="btn btn-primary mb-2"  (click)="addTask()">Add</button>
+      </ng-template>
+    </div>
+  </div>
+  <div class="row mt-3 justify-content-center">
+    <div class="col">
+      <div class="task">
+        <ul class="text-center" *ngFor="let t of tasklist ; let i= index;">
+       <li><input type="checkbox"  (click)="done()" class="strikethrough" ><span class="ml-1">{{t.tname}}</span> <button class="button" (click)="deleteTask(i)"><img src="../assets/icon.png" style="height:20px;"></button> <button class="button mr-1" (click)="editTask(i)"><img src="../assets/edit.png" style="height:20px;"></button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
